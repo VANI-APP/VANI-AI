@@ -1,0 +1,171 @@
+:root {
+  color-scheme: light;
+  --bg: #f6f7fb;
+  --panel: #ffffff;
+  --line: #dbe1eb;
+  --text: #172033;
+  --muted: #5d6a85;
+  --primary: #0f766e;
+  --primary-ink: #ffffff;
+  --danger: #b91c1c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 0% 0%, #e8fdf6, transparent 28%),
+    radial-gradient(circle at 100% 100%, #e5efff, transparent 28%),
+    var(--bg);
+}
+
+.shell {
+  max-width: 920px;
+  margin: 32px auto;
+  padding: 22px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header p {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+.controls {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  background: var(--panel);
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+select,
+input,
+button,
+textarea {
+  font: inherit;
+}
+
+select,
+input,
+textarea,
+pre {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: #fff;
+}
+
+.actions {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.toggle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: #f8fafc;
+}
+
+.toggle input {
+  margin: 0;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button.primary {
+  background: var(--primary);
+  color: var(--primary-ink);
+}
+
+.status {
+  color: var(--muted);
+}
+
+.output-wrap {
+  margin-top: 18px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+#transcript {
+  width: 100%;
+  resize: vertical;
+  min-height: 160px;
+}
+
+#diarizedTranscript {
+  width: 100%;
+  resize: vertical;
+  min-height: 160px;
+}
+
+#reportJson {
+  width: 100%;
+  resize: vertical;
+  min-height: 220px;
+}
+
+#events {
+  margin: 0;
+  min-height: 120px;
+  max-height: 220px;
+  overflow: auto;
+  font-size: 12px;
+  line-height: 1.35;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 700px) {
+  .shell {
+    margin: 0;
+    padding: 14px;
+  }
+
+  .controls {
+    grid-template-columns: 1fr;
+  }
+}

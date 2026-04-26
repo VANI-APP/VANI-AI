@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sarvam Near-Live STT</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header>
+        <h1>Sarvam Near-Live Speech to Text</h1>
+        <p>
+          Captures mic audio in short chunks and transcribes continuously using
+          Sarvam API.
+        </p>
+      </header>
+
+      <section class="controls">
+        <label>
+          Model
+          <select id="model">
+            <option value="saarika:v2.5">saarika:v2.5</option>
+            <option value="saaras:v3" selected>saaras:v3</option>
+          </select>
+        </label>
+
+        <label>
+          Mode (set translate for English output)
+          <select id="mode">
+            <option value="">(none)</option>
+            <option value="transcribe">transcribe</option>
+            <option value="translate" selected>translate</option>
+            <option value="verbatim">verbatim</option>
+            <option value="translit">translit</option>
+            <option value="codemix">codemix</option>
+          </select>
+        </label>
+
+        <label>
+          Language Code
+          <select id="languageCode">
+            <option value="unknown" selected>unknown (auto-detect)</option>
+            <option value="hi-IN">hi-IN</option>
+            <option value="en-IN">en-IN</option>
+            <option value="ta-IN">ta-IN</option>
+            <option value="te-IN">te-IN</option>
+            <option value="bn-IN">bn-IN</option>
+            <option value="mr-IN">mr-IN</option>
+            <option value="gu-IN">gu-IN</option>
+            <option value="kn-IN">kn-IN</option>
+            <option value="ml-IN">ml-IN</option>
+            <option value="pa-IN">pa-IN</option>
+            <option value="od-IN">od-IN</option>
+          </select>
+        </label>
+
+        <label>
+          Chunk Duration (ms)
+          <input id="chunkMs" type="number" min="300" max="5000" step="100" value="1200" />
+        </label>
+      </section>
+
+      <section class="actions">
+        <button id="startBtn" class="primary">Start</button>
+        <button id="stopBtn" disabled>Stop</button>
+        <button id="diarizeNowBtn" type="button">Diarize Now</button>
+        <button id="extractNowBtn" type="button">Extract Report Now</button>
+        <label class="toggle">
+          <input id="useGroqDiarization" type="checkbox" checked />
+          Auto diarize with Groq
+        </label>
+        <label class="toggle">
+          <input id="useLiveExtraction" type="checkbox" checked />
+          Live extraction
+        </label>
+        <span id="status" class="status">Idle</span>
+      </section>
+
+      <section class="output-wrap">
+        <h2>Raw Transcript (Sarvam)</h2>
+        <textarea id="transcript" rows="8" readonly placeholder="Your transcribed text will appear here..."></textarea>
+      </section>
+
+      <section class="output-wrap">
+        <h2>Diarized Transcript (Groq)</h2>
+        <textarea id="diarizedTranscript" rows="8" readonly placeholder="Speaker-labeled transcript will appear here..."></textarea>
+      </section>
+
+      <section class="output-wrap">
+        <h2>Live Healthcare Report (JSON)</h2>
+        <textarea id="reportJson" rows="12" readonly placeholder="Structured report extraction will appear here..."></textarea>
+      </section>
+
+      <section class="output-wrap">
+        <h2>Events</h2>
+        <pre id="events" aria-live="polite"></pre>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
