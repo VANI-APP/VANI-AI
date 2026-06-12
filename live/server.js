@@ -135,15 +135,6 @@ async function callGroqChat({ messages, temperature = 0.1, maxTokens = 1200 }) {
 
   const groqData = await groqRes.json().catch(() => ({}));
 
-  if (!groqRes.ok) {
-    const error = new Error("Groq request failed");
-    error.status = groqRes.status;
-    error.details = groqData;
-    throw error;
-  }
-
-  return groqData;
-}
 
 app.use(cors());
 app.use(express.json({ limit: "3mb" }));
